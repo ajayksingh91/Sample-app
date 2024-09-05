@@ -41,10 +41,3 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - upload_coverage:
-          requires:
-            - build
-#  version: 2
-#  build_and_test:
-#    jobs:
-#      - build
