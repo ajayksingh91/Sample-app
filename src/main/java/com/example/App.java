@@ -5,7 +5,7 @@ public class App {
         System.out.println("Hello World!");
     }
 
-    public int add(int a, int b) {
-        return a + b;
+    public int add(int b, int c) {
+        return b + c;
     }
 }
