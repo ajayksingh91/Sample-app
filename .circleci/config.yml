@@ -12,6 +12,9 @@ jobs:
       - run:
           name: Run tests and generate coverage report
           command: mvn clean verify
+      - run:
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar -Dsonar.projectKey=ajayksingh91_Sample-app
       - store_test_results:
           path: target/surefire-reports
 
@@ -20,3 +23,5 @@ workflows:
   build_and_test:
     jobs:
       - build
+      - build:
+            context: SonarCloud
