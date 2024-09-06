@@ -59,6 +59,11 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>4.0.0.4121</version> <!-- Specify the appropriate version here -->
+      </plugin>
     </plugins>
   </build>
 </project>
