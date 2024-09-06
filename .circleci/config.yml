@@ -7,14 +7,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build with Maven
-          command: mvn clean install
+          name: Build and Test
+          command: mvn clean verify
       - run:
           name: Run tests and generate coverage report
           command: mvn clean verify
       - run:
-          name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=ajayksingh91_Sample-app
+          name: SonarQube Analysis
+          command: |
+            # Install SonarScanner
+            curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
+            unzip sonar-scanner.zip
+            ./sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner -Dsonar.projectKey=ajayksingh91_Sample-app -Dsonar.organization=ajayksingh91
       - store_test_results:
           path: target/surefire-reports
 
@@ -23,5 +27,3 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - build:
-            context: SonarCloud
