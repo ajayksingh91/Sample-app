@@ -1,36 +1,3 @@
-#version: 2.1
-#
-#jobs:
-#  build:
-#    docker:
-#      - image: circleci/openjdk:11-jdk
-#    steps:
-#      - checkout
-#      - run:
-#          name: Build and Test
-#          command: mvn clean verify
-#      - run:
-#          name: Run tests and generate coverage report
-#          command: mvn clean verify
-##      - run:
-##          name: SonarQube Analysis
-##          command: |
-##            # Install SonarScanner
-##            curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
-##            unzip sonar-scanner.zip
-##            ./sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner -Dsonar.projectKey=ajayksingh91_Sample-app -Dsonar.organization=ajayksingh91
-#      - run:
-#          name: Analyze on SonarCloud
-#          command: mvn verify sonar:sonar -Dsonar.projectKey=ajayksingh91_Sample-app
-#      - store_test_results:
-#          path: target/surefire-reports
-#
-#workflows:
-#  version: 2
-#  build_and_test:
-#    jobs:
-#      - build
-#------------------------------------------------------
 version: 2.1
 jobs:
   build:
@@ -51,22 +18,3 @@ workflows:
   build_and_test:
     jobs:
       - build
-
-#-----------------------------------------------------------
-#version: 2.1
-#
-#jobs:
-#  build:
-#    docker:
-#      - image: 'cimg/openjdk:17.0'
-#    steps:
-#      - checkout
-#      - run:
-#          name: Analyze on SonarCloud
-#          command: mvn verify sonar:sonar -Dsonar.projectKey=ajayksingh91_Sample-app
-#
-#workflows:
-#  main:
-#    jobs:
-#      - build:
-#          context: SonarCloud
